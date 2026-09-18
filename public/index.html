@@ -4,47 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=neutral" />
+
     <title>Sistema de  Inventário de Empresa de TI</title>
 </head>
 <body>
 
+    <header>
+        <h1>Inventário de TI</h1>
+    </header>
+    
     <main class="system">
-        <form action="/salvar-equipamento" method="POST">
+        <div class="sistema-formulario">
+            <h2>Novo equipamento</h2><br>
+            <form id="formulario" action="/salvar-equipamento" method="POST">
 
-             <div class="info-form">
-                <label for="quantidade">Quantidade</label><br>
-                <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5">
-            </div>
-        
-            <div class="info-form">
-                <label for="nome">Nome do Item / Modelo:</label><br>
-                <input type="text" id="nome" name="nome" placeholder="Ex: Dell Inspiron 15 ou Mouse Logitech">
-            </div>
+                <div class="info-form">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 7">
+                </div>
+            
+                <div class="info-form">
+                    <label for="nome">Nome do Equipamento</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: Dell Inspiron 15 ou Mouse Logitech">
+                </div>
 
-            <div class="info-form">
-                <label for="categoria">Categoria:</label><br>
-                <select id="categoria" name="categoria" required style="width: 100%; max-width: 300px;">
-                <option value="" disabled selected>Escolha a categoria...</option>
-                <option value="computador">Computador</option>
-                <option value="periferico">Periférico</option>
-                <option value="rede">Rede</option>
-                </select>
-            </div>
+                <div class="info-form">
+                    <label for="categoria">Categoria:</label>
+                    <select id="categoria" name="categoria"  class="label-form">
+                    <option value="" disabled selected>Escolha a categoria...</option>
+                    <option value="computador">Computador</option>
+                    <option value="periferico">Periférico</option>
+                    <option value="rede">Rede</option>
+                    </select>
+                </div>
 
-            <div class="info-form">
-                <label for="status">Status:</label><br>
-                <select id="status" name="status" required style="width: 100%; max-width: 300px;">
-                <option value="" disabled selected>Escolha o status atual...</option>
-                <option value="disponivel">Disponível</option>
-                <option value="em_uso">Em uso</option>
-                <option value="em_manutencao">Em manutenção</option>
-                </select>
-            </div>
+                <div class="info-form">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" class="label-form">
+                    <option value="" disabled selected >Escolha o status atual...</option>
+                    <option value="disponivel">Disponível</option>
+                    <option value="em_uso">Em uso</option>
+                    <option value="em_manutencao">Em manutenção</option>
+                    </select>
+                </div>
 
-            <!-- Botão de Envio -->
-    <button type="submit" style="padding: 8px 15px; cursor: pointer;"> Adicionar</button>
-</form>
+            
+                <button type="submit" style="padding: 8px 15px; cursor: pointer;" id="adicionar"> Adicionar</button>
+            </form>
 
+        </div>
+        <div class="equipamentos">
+
+        </div>
+       
     </main>
     <footer>
 
