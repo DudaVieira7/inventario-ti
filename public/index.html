@@ -69,23 +69,27 @@
             <div class="filtros">
                 <div class="filtro-item">
                     <label for="filtro-status">Todos os Status</label>
-                    <select name="filtro-status" id="filtro-status">
+                    <select name="filtro-status" id="filtro-status" class="label-form">
                         <option value="">Todos os status</option>
                         <option value="disponivel">Disponível</option>
                         <option value="em_uso">Em em_uso</option>
                         <option value="em_manutencao">Em manutenção</option>
                     </select>
                 </div>
-                <div class="filtro-tem">
-                    <label for="filtro-categoria">Filtrar Categoria</label>
-                    <select name="filtro-categoria" id="filtro-categoria">
+                <div class="filtro-item">
+                    <label for="filtro-categoria" >Filtrar Categoria</label>
+                    <select name="filtro-categoria" id="filtro-categoria" class="label-form">
                         <option value="">Todas as categorias</option>
                         <option value="computador">Computador</option>
                         <option value="periferico">Periférico</option>
                         <option value="rede">Rede</option>
                     </select>
                 </div>
-                <button type="button" id="limpar-filtros">Limpar Filtros</button>
+                <button type="button" id="limpar-filtros">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-right" viewBox="0 0 16 16">
+                    <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5m0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5m0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5"/>
+</svg>
+                    Limpar Filtros</button>
             </div>
 
             <div class="contar-itens">
@@ -109,7 +113,15 @@
                     </tbody>
                 </table>
             </div>
-            <p id="mensagem-vazia" class="mensagem-vazia" style="display: none;">Não foi encontrado nenhum item</p>
+            <p id="mensagem-vazia" class="mensagem-vazia" style="display: none;">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2" viewBox="0 0 16 16">
+                <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3zM7.5 1H3.75L1.5 4h6zm1 0v3h6l-2.25-3zM15 5H1v10h14z"/>
+                </svg>
+
+                 Não foi encontrado nenhum item
+                
+            </p>
         </div>
 
         <div id="toast" class="toast" style="display: none;"></div>
@@ -117,6 +129,8 @@
 
     </main>
     <footer>
+
+
 
     </footer>
 
