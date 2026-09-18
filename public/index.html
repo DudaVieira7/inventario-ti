@@ -18,6 +18,11 @@
     </header>
     
     <main class="system">
+
+
+
+<!--------------------Formulário de cadastro e atualização do sistema-->
+
         <div class="sistema-formulario">
             <h2>Novo equipamento</h2><br>
             <form id="formulario" action="/salvar-equipamento" method="POST">
@@ -35,20 +40,20 @@
                 <div class="info-form">
                     <label for="categoria">Categoria:</label>
                     <select id="categoria" name="categoria"  class="label-form">
-                    <option value="" disabled selected>Escolha a categoria...</option>
-                    <option value="computador">Computador</option>
-                    <option value="periferico">Periférico</option>
-                    <option value="rede">Rede</option>
+                        <option value="" disabled selected>Escolha a categoria...</option>
+                        <option value="computador">Computador</option>
+                        <option value="periferico">Periférico</option>
+                        <option value="rede">Rede</option>
                     </select>
                 </div>
 
                 <div class="info-form">
                     <label for="status">Status:</label>
                     <select id="status" name="status" class="label-form">
-                    <option value="" disabled selected >Escolha o status atual...</option>
-                    <option value="disponivel">Disponível</option>
-                    <option value="em_uso">Em uso</option>
-                    <option value="em_manutencao">Em manutenção</option>
+                        <option value="" disabled selected >Escolha o status atual...</option>
+                        <option value="disponivel">Disponível</option>
+                        <option value="em_uso">Em uso</option>
+                        <option value="em_manutencao">Em manutenção</option>
                     </select>
                 </div>
 
@@ -57,10 +62,59 @@
             </form>
 
         </div>
-        <div class="equipamentos">
 
+<!--- parte inferior onde mostra os itens cadastrados  e os filtros  do  sistema-->
+
+        <div class="equipamentos">
+            <div class="filtros">
+                <div class="filtro-item">
+                    <label for="filtro-status">Todos os Status</label>
+                    <select name="filtro-status" id="filtro-status">
+                        <option value="">Todos os status</option>
+                        <option value="disponivel">Disponível</option>
+                        <option value="em_uso">Em em_uso</option>
+                        <option value="em_manutencao">Em manutenção</option>
+                    </select>
+                </div>
+                <div class="filtro-tem">
+                    <label for="filtro-categoria">Filtrar Categoria</label>
+                    <select name="filtro-categoria" id="filtro-categoria">
+                        <option value="">Todas as categorias</option>
+                        <option value="computador">Computador</option>
+                        <option value="periferico">Periférico</option>
+                        <option value="rede">Rede</option>
+                    </select>
+                </div>
+                <button type="button" id="limpar-filtros">Limpar Filtros</button>
+            </div>
+
+            <div class="contar-itens">
+                <span id="total-itens">O itens cadastrados</span>
+            </div>
+            <div class="tabela-itens">
+                <table id="tabela-equipamentos">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Quantidade</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela">
+
+                        <!---Aqui vai entrar os itens dinâmicos da tabela --->
+
+                    </tbody>
+                </table>
+            </div>
+            <p id="mensagem-vazia" class="mensagem-vazia" style="display: none;">Não foi encontrado nenhum item</p>
         </div>
-       
+
+        <div id="toast" class="toast" style="display: none;"></div>
+
+
     </main>
     <footer>
 
