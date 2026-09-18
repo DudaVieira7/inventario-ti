@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Sistema de  Inventário de Empresa de TI</title>
+</head>
+<body>
+
+    <main class="system">
+        <form action="/salvar-equipamento" method="POST">
+
+             <div class="info-form">
+                <label for="quantidade">Quantidade</label><br>
+                <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5">
+            </div>
+        
+            <div class="info-form">
+                <label for="nome">Nome do Item / Modelo:</label><br>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Dell Inspiron 15 ou Mouse Logitech">
+            </div>
+
+            <div class="info-form">
+                <label for="categoria">Categoria:</label><br>
+                <select id="categoria" name="categoria" required style="width: 100%; max-width: 300px;">
+                <option value="" disabled selected>Escolha a categoria...</option>
+                <option value="computador">Computador</option>
+                <option value="periferico">Periférico</option>
+                <option value="rede">Rede</option>
+                </select>
+            </div>
+
+            <div class="info-form">
+                <label for="status">Status:</label><br>
+                <select id="status" name="status" required style="width: 100%; max-width: 300px;">
+                <option value="" disabled selected>Escolha o status atual...</option>
+                <option value="disponivel">Disponível</option>
+                <option value="em_uso">Em uso</option>
+                <option value="em_manutencao">Em manutenção</option>
+                </select>
+            </div>
+
+            <!-- Botão de Envio -->
+    <button type="submit" style="padding: 8px 15px; cursor: pointer;"> Adicionar</button>
+</form>
+
+    </main>
+    <footer>
+
+    </footer>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
