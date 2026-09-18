@@ -19,7 +19,8 @@ header{
     height: 90px;
     padding: 10px;
     text-align: center;
-    margin-bottom: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 header h1{
@@ -67,7 +68,7 @@ main{
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    padding-top: 20px;
+    
 }
 
 .sistema-formulario h2{
@@ -137,10 +138,195 @@ input{
 
 
 
-/*==========================PARTE DAS DIVS COM OS PRODUTOS E O STATUS========================================*/
+
+
+/*================PARTE DAS DIVS COM OS PRODUTOS E OS FILTROS DE STATUS================================*/
+
+.equipamentos{
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+                                        /*seção de filtros*/
+.filtros{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    align-items: flex-end;
+   
+}
+
+.filtro-item{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 160px;
+
+}
+
+.filtro-item label{
+   margin-bottom: 5px; 
+   color: #1C3C70;
+   font-size: 1rem;
+}
+
+#limpar-filtros{
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    transition: all ease 1.5ms;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: poppins;
+    background-color: #bfd8e372;
+    outline: none;
+    justify-content: center;
+    color:#010B8B;
+
+}
+#limpar-filtros:hover{
+    background-color: #bfd8e39f;
+}
+
+.contar-itens{
+    color: #010B8B;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+
+}
+
+
+.tabela-itens{
+
+    overflow-x: auto; /* controla o ecesso visível de conteúdo*/
+
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;/* elimina espaço duplo entre colunas de uma tabela*/
+}
+
+thead th{
+    text-align: left;
+    padding: 15px;
+    color :#010B8B;
+    font-weight: 400;
+    font-size: 0.75rem;
+    border-bottom: 2px solid #a3b8e4;
+
+}
+
+tbody td{
+    padding: 12px;
+    border-bottom: 1px solid #E3F1F8;
+    color: #1E293B;
+    align-items: center;
+   
+}
+
+
+tbody tr:hover{
+    background-color: #F8FAFC;
+}
 
 
 
+
+
+/*Badges com os Status do item vermelho, amarelo e verde*/
+
+
+.badge{
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-block;
+}
+
+
+.badge-disponivel{
+    background-color: #DCFCE7;
+    color: #16A34A;
+}
+
+.badge-em_uso{
+    background-color: #FEF9C3;
+    color: #CA8A04;
+}
+    
+.badge-em_manutencao{
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+
+
+
+
+/* Botãoes para ação*/
+
+.acoes{
+    display:flex;
+    gap: 10px;
+}
+
+
+.btn-icone{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #2B2B2B;
+    transition: color 0.2s;
+    gap: 10px;
+}
+
+
+.btn-editar:hover{
+    color: #2D6FCE;
+}
+
+
+.btn-excluir:hover{
+    color: #DC2626;
+
+}
+
+.mensagem-vazia{
+    text-align: center;
+    color:#010B8B;
+    padding: 20px;
+}
+
+/* feedback*/
+
+.toast{
+    position:fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    font-family: Poppins;
+    z-index: 999; /* controla a ordem de emplihamento */
+
+}
+
+
+.toast.sucesso{
+    background-color: #16A34A;
+}
+
+.toast.erro{
+    background-color: #DC2626;
+}
 
 
 
@@ -152,13 +338,69 @@ input{
         margin: auto;
     }
 
+
+
+    .equipamentos{
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+    }
+
 }
+
+
 
 @media (min-width:768px){
     
     .sistema-formulario{
-        width: 70%;
+        width: 75%;
+    }
+    .equipamentos{
+        width: 75%;
     }
 
+   
 }
+
+
+@media (max-width: 640px){
+
+    thead{
+        display: none;
+    }
+
+    #tabela-equipamentos, tbody, tr, td{
+        display: block;
+        width: 100%;
+
+    }
+
+    tbody td{
+        padding: 6px 12px;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    tbody td::before{
+        content: attr(data-label); 
+        font-weight: 700;
+        color: #64748B;
+        margin-top: 10px;
+
+    }
+
+    tbody tr{
+        border-bottom: 1px solid #2b4da5;
+        margin: 2px auto;
+        
+    }
+
+    .acoes{
+        justify-content: flex-end;
+    }
+
+
+}
+
 
