@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+
+
 *{
     margin: 0;
     box-sizing: border-box;
@@ -8,28 +11,43 @@
 
 
 body{
-    background-color: #E3F1F8;
+    background-color: #DFE7F7;
     font-family: Poppins ;
     font-weight: 400;
 }
 
 
 header{
-    background-color: #010B8B;
-    height: 90px;
+    background: linear-gradient(to right,#031130, #010B8B, #185DF1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     margin-bottom: 15px;
+    color:#d3d6e5;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 2.4;
+   
+
 }
+
+
 
 header h1{
     font-weight: 300px;
-    padding: 20px;
-    font-size: 1.5rem;
-    color:#E3F1F8;
+    font-size: 1.6rem;
+    color: #f7f7ff;
+    
 }
 
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color:  #64748B;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
 
 /*================================PARTE DE CIMA FORMULÁRIO============================*/
 
@@ -50,7 +68,7 @@ header h1{
 
 #formulario label{
     margin-bottom: 5px;
-    color: #1C3C70;
+    color: #4d596b;
     font-size: 1rem;
 
 }
@@ -64,10 +82,11 @@ main{
 .sistema-formulario{
     background-color: white;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
     
 }
 
@@ -79,61 +98,78 @@ main{
 
 #adicionar{
     width: 100%;
-    background-color: #2D6FCE;
+    background-color: #185DF1;
     color: white;
     height: 40px;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 20px;
     border: none;
     transition: all ease 1.5ms;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: poppins;
 
    
 }
 
 #adicionar:hover{
-    background-color: #142771ee;
+    background-color: #3070f9;
+    outline:  0.2px solid #185DF1;
+    border: 2px solid #869bf65d;
+    box-shadow: 1px 1px 3px #9ba8c4;
 }
 
 input{
     height: 40px;
-    border-radius: 10px;
-    border: 0.5px solid #63A7D4;
+    border-radius: 20px;
+    border: 0.2px solid #B2BED6;
     padding: 10px;
-    box-shadow: 0px 4px 10px #1d355d10;
+    box-shadow: 0px 4px 10px #1d355d00;
     cursor: pointer;
+    background: #e3e7fc2a;
 
     
 }
  input::placeholder{
-    color: #54668D;
+    color: #57667b;  
  }
 
 
  input:focus{
-    outline: 1px solid #1C3C70;
-    background-color: #d6ddff1f;
+    outline:  0.2px solid #185DF1;
+    background-color: #ffff;
+    border: 2px solid #869bf65d;
+    box-shadow: 1px 1px 3px #9ba8c4;
+    
  }
+
+
 
 
  .label-form{
 
     height: 40px;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 1px solid #63A7D4;
     padding: 10px;
     box-shadow: 0px 4px 10px #1d355d10;
     cursor: pointer;
+    background-color: #e3e7fc3b;
    
    
+ }
+
+ .label-form:focus{
+    outline:  0.2px solid #185DF1;
+    background-color: #ffff;
+    border: 2px solid #869bf65d;
+    box-shadow: 1px 1px 3px #9ba8c4;
  }
 
 
  
  .label-form option:disabled {
-    color: #63A7D4;
+    color: #636ad4;
 }
 
 
@@ -227,12 +263,13 @@ tbody td{
     border-bottom: 1px solid #E3F1F8;
     color: #1E293B;
     align-items: center;
+    
    
 }
 
 
 tbody tr:hover{
-    background-color: #F8FAFC;
+    background-color: #e3e7fc2a;
 }
 
 
@@ -284,13 +321,22 @@ tbody tr:hover{
     cursor: pointer;
     font-size: 1.1rem;
     color: #2B2B2B;
-    transition: color 0.2s;
-    gap: 10px;
+    transition: color 0.3s;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    
+    
+    
+}
+.btn-icone:hover{
+    background-color: #bfd8e372;
 }
 
-
 .btn-editar:hover{
-    color: #2D6FCE;
+    color: #173DED;
+    
+    
 }
 
 
@@ -303,6 +349,9 @@ tbody tr:hover{
     text-align: center;
     color:#010B8B;
     padding: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: #bfd8e369;
 }
 
 /* feedback*/
@@ -393,6 +442,7 @@ tbody tr:hover{
     tbody tr{
         border-bottom: 1px solid #2b4da5;
         margin: 2px auto;
+        
         
     }
 
