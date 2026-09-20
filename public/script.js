@@ -1,31 +1,8 @@
-// dados fictícios para iniciar na tela
 
-let equipamentos = [
-    {
-        id: 1, 
-        quantidade: 2,
-        nome: "Notebook Dell Inspiron",
-        categoria:"computador",
-        status:"disponivel"
-    },
+const API_URL = '/api/equipamentos'; // aponta para o endereço que tá no server.js... app.use('/api/equipamentos', equipamentoRoutes);
 
-    {
-        id:2,
-        quantidade:5,
-        nome:"Mouse sem Fio Logitech",
-        categoria:"periferico",
-        status:"em_uso"
-    },
+let equipamentos = [];
 
-    {
-        id:3,
-        quantidade: 5,
-        nome: "Monitor LG 24",
-        categoria:"computador",
-        status:"em_manutencao"
-
-    }
-];
 
 let editandoId = null; //guarda o id quando é editado um item 
 
@@ -41,6 +18,26 @@ const formulario = document.getElementById('formulario');
 const filtroStatus = document.getElementById('filtro-status');      // filtro inicial no formulario para saber os status
 const filtroCategoria = document.getElementById('filtro-categoria');// filtro inicial no formulario para saber a categoria do item(disponivel, em uso, em manutenção)
 
+//======================= BUSCA OS DADOS  DA API===============================================
+async function carregarEquipamentos() {
+    try{
+
+        const params = new URLSearchParams();
+        if(filtroStatus.value) params.append('status',filtroStatus.value);
+        if(filtroCategoria.value) params.append('categoria', filtroCategoria.value);
+
+        const resposta = await fetch(`${API_URL}?${params.toString()}`);
+        if(!resposta.ok) throw new Error('Erro ao buscar equipamentos');
+
+        equipamentos = await resposta.json();
+        renderizarTabela();
+
+    }catch(erro){
+        console.error(erro);
+        mostrarToast("ERRO: não foi possível carregar os Equipamentos","erro");
+    }
+    
+}
 
 //==============    renderização na tela =====================================================
 
@@ -113,7 +110,7 @@ function mostrarToast(mensagem, tipo = "sucesso"){
 
 
 // mostra na tela
-renderizarTabela();
+carregarEquipamentos();
 
 
 
@@ -121,7 +118,7 @@ renderizarTabela();
 
 // ======== SUBMIT DO FORMULÁRIO (criar ou editar) ========
 
-formulario.addEventListener("submit", function (e) {
+formulario.addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const quantidade = document.getElementById("quantidade").value;
@@ -134,37 +131,47 @@ formulario.addEventListener("submit", function (e) {
         return;
     }
 
+    const dados = {quantidade: Number(quantidade), nome, categoria, status}; // obj que ser enviado pro backend
+
+    try{
     if (editandoId) {
-        // Atualizando um item existente
-        equipamentos = equipamentos.map(item =>
-            item.id === editandoId
-                ? { ...item, quantidade: Number(quantidade), nome, categoria, status }
-                : item
-        );
+        
+        const resposta = await fetch(`${API_URL}/${editandoId}`,{
+            method: 'PUT',
+            headers: {'Content-Type': 'Application/json'},
+            body: JSON.stringify(dados)
+        });
+
+        if(!resposta.ok) throw new Error('Erro ao atualizar!');
+
         mostrarToast("Equipamento atualizado com sucesso!");
         editandoId = null;
         document.getElementById("adicionar").textContent = "Adicionar";
     } else {
-        // Criando um novo item
-        const novoItem = {
-            id: Date.now(), // provisório, no backend real o id vem do banco
-            quantidade: Number(quantidade),
-            nome,
-            categoria,
-            status,
-        };
-        equipamentos.push(novoItem);
-        mostrarToast("Equipamento adicionado com sucesso!");
+        
+        const resposta = await fetch(API_URL,{
+            method: 'POST',
+            headers:{'Content-Type': 'Application/json'},
+            body: JSON.stringify(dados)
+        });
+        if(!resposta.ok) throw new Error('ERRO ao criar o item');
+
+        mostrarToast("Equipamento adiconado com sucesso!");
+
     }
 
     formulario.reset();
-    renderizarTabela();
+    await carregarEquipamentos();
+    } catch(erro){
+    console.error(erro)
+        mostrarToast("ERRO ao salvar equipamento.","erro");
+    }
 });
 
 
 // ======== EDITAR / EXCLUIR (delegação de evento) ========
 
-corpoTabela.addEventListener("click", function (e) {
+corpoTabela.addEventListener("click", async function (e) {
     const botao = e.target.closest("button");
     if (!botao) return;
 
@@ -173,15 +180,28 @@ corpoTabela.addEventListener("click", function (e) {
 
     if (botao.classList.contains("btn-excluir")) {
         const confirmar = confirm("Tem certeza que deseja excluir este equipamento?");
+
         if (confirmar) {
-            equipamentos = equipamentos.filter(item => item.id !== id);
-            mostrarToast("Equipamento excluído.", "erro");
-            renderizarTabela();
+            try {
+                
+                const resposta = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+
+                if (!resposta.ok) throw new Error('Erro ao excluir');
+
+                mostrarToast("Equipamento excluído.", "erro");
+                await carregarEquipamentos();
+
+            } catch (erro) {
+                console.error(erro);
+                mostrarToast("Erro ao excluir equipamento.", "erro");
+            }
         }
     }
 
     if (botao.classList.contains("btn-editar")) {
+        
         const item = equipamentos.find(item => item.id === id);
+
         document.getElementById("quantidade").value = item.quantidade;
         document.getElementById("nome").value = item.nome;
         document.getElementById("categoria").value = item.categoria;
@@ -196,11 +216,11 @@ corpoTabela.addEventListener("click", function (e) {
 
 // ======== FILTROS ========
 
-filtroStatus.addEventListener("change", renderizarTabela);
-filtroCategoria.addEventListener("change", renderizarTabela);
+filtroStatus.addEventListener("change", carregarEquipamentos);
+filtroCategoria.addEventListener("change",carregarEquipamentos);
 
 document.getElementById("limpar-filtros").addEventListener("click", () => {
     filtroStatus.value = "";
     filtroCategoria.value = "";
-    renderizarTabela();
+    carregarEquipamentos();
 });
