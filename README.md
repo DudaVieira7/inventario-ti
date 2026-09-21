@@ -10,9 +10,9 @@
 ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge\&logo=npm\&logoColor=white)
 ![JSON](https://img.shields.io/badge/JSON-5E5C5C?style=for-the-badge\&logo=json\&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge\&logo=bootstrap\&logoColor=white)
-![Responsivo](https://img.shields.io/badge/Responsivo-Sim-green?style=for-the-badge)
 ![Docker](https://img.shields.io/badge/DOCKER-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
 ![Docker Compose](https://img.shields.io/badge/DOCKER_COMPOSE-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
+![Responsivo](https://img.shields.io/badge/Responsivo-Sim-green?style=for-the-badge)
 
 > **Mini-dashboard para gerenciamento de equipamentos de TI** de uma empresa (notebooks, periféricos, monitores e equipamentos de rede).
 
