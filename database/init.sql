@@ -1,4 +1,4 @@
-CREATE DATABASE sistema_gerenciamento_ti;
+CREATE DATABASE IF NOT EXISTS sistema_gerenciamento_ti;
 USE sistema_gerenciamento_ti;
 
 CREATE TABLE equipamentos(
