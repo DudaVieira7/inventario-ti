@@ -38,10 +38,9 @@
 
 **Por que esta stack foi utilizada?**
 
-Optei por Node.js e Express por serem as tecnologias com as quais tenho maior domínio, e por HTML, CSS e JavaScript puro no frontend para manter a aplicação simples e leve, sem a complexidade adicional de um framework, que foi um dos requisitos solicitados no desafio técnico no qual desenvolvi este projeto.
+Escolhi Node.js e Express no backend por serem as tecnologias que domino melhor. No frontend, preferi usar HTML, CSS e JavaScript puro para manter a aplicação leve e simples, evitando a complexidade desnecessária de um framework.
 
 ---
-
 ## 🚀 Como Executar
 
 **Pré-requisito:** ter o Docker Desktop instalado e em execução.
@@ -105,9 +104,9 @@ docker compose down -v
 
 ## 🔐 Sobre as Credenciais no Arquivo `docker-compose.yml`
 
-As credenciais do banco de dados estão definidas diretamente no **docker-compose.yml** para simplificar a execução pelo avaliador com um único comando, conforme solicitado no desafio.
+As credenciais do banco de dados estão definidas diretamente no arquivo docker-compose.yml para facilitar a execução com um único comando.
 
-Em um ambiente de produção real, essas credenciais seriam gerenciadas por meio de variáveis de ambiente não versionadas (como um arquivo `.env` incluído no `.gitignore`) ou por um gerenciador de segredos dedicado.
+Em um ambiente de produção real, essas credenciais seriam gerenciadas por meio de variáveis de ambiente não versionadas (como um arquivo .env incluído no .gitignore) ou por um gerenciador de segredos dedicado.
 
 ---
 
